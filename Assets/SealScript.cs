@@ -5,7 +5,12 @@ using UnityEngine;
 public class SealScript : MonoBehaviour
 {
     GameObject glyph;
-    bool isShown = false; 
+
+    public bool isRed;
+    public bool isBlu;
+    public bool isYel;
+
+    bool isShown = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -48,12 +53,30 @@ public class SealScript : MonoBehaviour
             DisplayGlyph();
         }
 
-        if (collision.gameObject.name == "Howl")
+        Bullet bullet = collision.GetComponent<Bullet>();
+        if (bullet != null)
         {
-            if(isShown)
+            if(isBlu)
             {
-                Debug.Log("vamos jogar o jogo do contente!");
+                if(bullet.isBlu)
+                {
+                    Debug.Log("pisou!");
+                }
+                else
+                {
+                    Debug.Log("errastes!");
+                }
+
             }
+              if(isRed)
+            {
+                
+            }
+              if(isRed)
+            {
+                
+            }
+
         }
     }
 

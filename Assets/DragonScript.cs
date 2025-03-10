@@ -6,27 +6,42 @@ public class DragonScript : MonoBehaviour
 {
     bool moveUp;
     bool moveDown;
+    bool shoot;
 
     public GameObject city;
     CityScript cs;
     //arma?
+    Gun[] guns;
 
     private float rotationAroundSelfSpeed;
 
     public bool isDown = false;
     bool isCasting = false;
-    bool isHowling = false;
+
     GameObject radar;
-    GameObject howl;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
         radar = transform.Find("Radar").gameObject;
-        howl = transform.Find("Howl").gameObject;
+
         DeactivateRadar();
-        DeactivateHowl();
+
+
+        guns = transform.GetComponentsInChildren<Gun>();
+        foreach (Gun gun in guns)
+        {
+            gun.isActive = true;
+            /*
+            //desativa guns com power up level requirement diferente de zero
+            if (gun.powerUpLevelRequirement != 0)
+            {
+                gun.gameObject.SetActive(false);
+            }
+            */
+        }
 
     }
 
@@ -36,6 +51,7 @@ public class DragonScript : MonoBehaviour
 
         moveUp = Input.GetKey(KeyCode.UpArrow);
         moveDown = Input.GetKey(KeyCode.DownArrow);
+        shoot = Input.GetKeyDown(KeyCode.Z);
 
 
         if (moveUp)
@@ -60,10 +76,18 @@ public class DragonScript : MonoBehaviour
             StartCoroutine(ActivateRadar());
         }
 
-        if (Input.GetKeyDown(KeyCode.Z) && !isHowling)
+        if (shoot)
         {
-            StartCoroutine(StartHowling());
+            shoot = false;
+            foreach (Gun gun in guns)
+            {
+                if (gun.gameObject.activeSelf)
+                {
+                    gun.Shoot();
+                }
+            }
         }
+
     }
 
 
@@ -89,10 +113,7 @@ public class DragonScript : MonoBehaviour
         radar.SetActive(false);
     }
 
-    void DeactivateHowl()
-    {
-        howl.SetActive(false);
-    }
+
 
     IEnumerator ActivateRadar()
     {
@@ -101,15 +122,6 @@ public class DragonScript : MonoBehaviour
         yield return new WaitForSeconds(1.05f);
         DeactivateRadar();
         isCasting = false;
-    }
-
-    IEnumerator StartHowling()
-    {
-        isHowling = true;
-        howl.SetActive(true);
-        yield return new WaitForSeconds(1.05f);
-        DeactivateHowl();
-        isHowling = false;
     }
 
 
