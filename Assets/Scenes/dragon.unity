@@ -670,8 +670,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points:
-  - {fileID: 1820801833}
   - {fileID: 2126396121}
+  - {fileID: 1407489933}
+  - {fileID: 1820801833}
   line: {fileID: 730767173}
 --- !u!114 &730767173
 MonoBehaviour:
@@ -685,6 +686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfde1712e177e4a76b8b42acbce4d778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sealIndexReq: 3
 --- !u!120 &730767174
 LineRenderer:
   serializedVersion: 2
@@ -1135,6 +1137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfde1712e177e4a76b8b42acbce4d778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sealIndexReq: 2
 --- !u!120 &1329300039
 LineRenderer:
   serializedVersion: 2

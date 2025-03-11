@@ -19,6 +19,8 @@ public class DragonScript : MonoBehaviour
     //arma?
     Gun[] guns;
 
+    public static int sealIndex;
+
     private float rotationAroundSelfSpeed;
 
     public bool isDown = false;

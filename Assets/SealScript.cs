@@ -64,6 +64,8 @@ public class SealScript : MonoBehaviour
                 {
                     if (bullet.isBlu)
                     {
+                        DragonScript.sealIndex++;
+                        Debug.Log("pisou!");
                         StopAllCoroutines();
                         Destroy(bullet.gameObject);
                     }
