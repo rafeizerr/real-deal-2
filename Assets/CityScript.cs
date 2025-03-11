@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CityScript : MonoBehaviour
+public class RotationScript : MonoBehaviour
 {
+
+      public bool facingRight = true;
         [SerializeField] private float rotationAroundSelfSpeed = 180f;
         [SerializeField] private float rotationAroundSelfNegativeSpeed = -180f;
 

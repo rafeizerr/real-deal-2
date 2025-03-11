@@ -37,12 +37,14 @@ public class SealScript : MonoBehaviour
     {
         glyph.SetActive(true);
         isShown = true;
+        //GetComponent<Collider2D>().enabled = true;
     }
 
     void DeactivateGlyph()
     {
         glyph.SetActive(false);
         isShown = false;
+        //GetComponent<Collider2D>().enabled = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -56,25 +58,29 @@ public class SealScript : MonoBehaviour
         Bullet bullet = collision.GetComponent<Bullet>();
         if (bullet != null)
         {
-            if(isBlu)
+            if (isShown)
             {
-                if(bullet.isBlu)
+                if (isBlu)
                 {
-                    Debug.Log("pisou!");
-                }
-                else
-                {
-                    Debug.Log("errastes!");
-                }
+                    if (bullet.isBlu)
+                    {
+                        StopAllCoroutines();
+                        Destroy(bullet.gameObject);
+                    }
+                    else
+                    {
+                        Debug.Log("errastes!");
+                    }
 
-            }
-              if(isRed)
-            {
-                
-            }
-              if(isRed)
-            {
-                
+                }
+                if (isRed)
+                {
+
+                }
+                if (isRed)
+                {
+
+                }
             }
 
         }

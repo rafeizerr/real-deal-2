@@ -8,8 +8,14 @@ public class DragonScript : MonoBehaviour
     bool moveDown;
     bool shoot;
 
+    bool aimUp;
+    bool aimDown;
+
     public GameObject city;
-    CityScript cs;
+    RotationScript rs;
+
+    public GameObject rotGun;
+    RotationScript rg;
     //arma?
     Gun[] guns;
 
@@ -52,12 +58,14 @@ public class DragonScript : MonoBehaviour
         moveUp = Input.GetKey(KeyCode.UpArrow);
         moveDown = Input.GetKey(KeyCode.DownArrow);
         shoot = Input.GetKeyDown(KeyCode.Z);
+        aimUp = Input.GetKey(KeyCode.LeftArrow);
+        aimDown = Input.GetKey(KeyCode.RightArrow);
 
 
         if (moveUp)
         {
-            cs = city.GetComponent<CityScript>();
-            cs.RotateUp();
+            rs = city.GetComponent<RotationScript>();
+            rs.RotateUp();
             if (isDown)
             {
                 MoveUp();
@@ -66,9 +74,25 @@ public class DragonScript : MonoBehaviour
 
         if (moveDown)
         {
-            cs = city.GetComponent<CityScript>();
-            cs.RotateDown();
-            MoveDown();
+            rs = city.GetComponent<RotationScript>();
+            rs.RotateDown();
+            if (!isDown)
+            {
+                MoveDown();
+            }
+        }
+
+
+        if (aimUp)
+        {
+            rg = rotGun.GetComponent<RotationScript>();
+            rg.RotateUp();
+        }
+
+        if (aimDown)
+        {
+            rg = rotGun.GetComponent<RotationScript>();
+            rg.RotateDown();
         }
 
         if (Input.GetKeyDown(KeyCode.X) && !isCasting)
@@ -94,14 +118,20 @@ public class DragonScript : MonoBehaviour
     void MoveDown()
     {
         isDown = true;
-        transform.eulerAngles = new Vector3(0, 0, -180);
+        Vector3 theScale = transform.localScale;
+        theScale.y *= -1;
+        transform.localScale = theScale;
     }
 
     void MoveUp()
     {
         isDown = false;
-        transform.eulerAngles = new Vector3(0, 0, 0);
+        Vector3 theScale = transform.localScale;
+        theScale.y *= -1;
+        transform.localScale = theScale;
     }
+
+
 
     void StopSpeed()
     {

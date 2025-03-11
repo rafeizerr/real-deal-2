@@ -6,6 +6,7 @@ public class GunRotation : MonoBehaviour
 {
     [SerializeField] private float rotationAroundSelfSpeed = 180f;
     [SerializeField] private float rotationAroundSelfNegativeSpeed = -180f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,12 +16,11 @@ public class GunRotation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(KeyCode.LeftArrow));
+        if(Input.GetKey(KeyCode.A)); 
         {
             RotateDown();
-            Debug.Log("rato");
         }
-            if(Input.GetKey(KeyCode.RightArrow));
+            if(Input.GetKey(KeyCode.S));
         {
             RotateUp();
         }
@@ -30,6 +30,7 @@ public class GunRotation : MonoBehaviour
     public void RotateUp()
     {
     this.transform.Rotate(Vector3. forward, rotationAroundSelfSpeed * Time.deltaTime);    
+    Debug.Log("cachorro");
     }
 
     public void RotateDown()
