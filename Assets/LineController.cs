@@ -33,6 +33,7 @@ public class LineController : MonoBehaviour
             lr.enabled = true;
         }
 
+
         for (int i = 0; i < points.Length; i++)
         {
             lr.SetPosition(i, points[i].position);

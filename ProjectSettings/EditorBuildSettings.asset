@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/scene1.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/detachment.unity
+    guid: d4e529685d9d24728b62b3502afc9120
+  - enabled: 1
+    path: Assets/Scenes/dragon.unity
+    guid: d00f2622e0e934acc88c08e7637546e6
   m_configObjects: {}
