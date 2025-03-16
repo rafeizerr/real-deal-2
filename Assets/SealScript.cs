@@ -61,48 +61,49 @@ public class SealScript : MonoBehaviour
             DisplayGlyph();
             Debug.Log("DisplayGlyph");
         }
-
-        Bullet bullet = collision.GetComponent<Bullet>();
-        if (bullet != null)
-        {
-            if (isShown)
-            {
-                lineControllers = transform.GetComponentsInChildren<LineController>();
-                foreach (LineController lineController in lineControllers)
-                    if (DragonScript.sealIndex != lineController.sealIndexReq)
-                    {
-                        //DragonScript.hasFumbled = true;
-                    }
-
-                if (isBlu)
+        /*
+                Bullet bullet = collision.GetComponent<Bullet>();
+                if (bullet != null)
                 {
-                    if (bullet.isBlu)
+                    if (isShown)
                     {
-                        DragonScript.sealIndex++;
-                        //Debug.Log("pisou!");
-                        //GetComponent<Collider2D>().enabled = false;
-                        StopAllCoroutines();
-                        Destroy(bullet.gameObject);
-                    }
-                    else
-                    {
-                        DragonScript.hasFumbled = true;
+                        lineControllers = transform.GetComponentsInChildren<LineController>();
+                        foreach (LineController lineController in lineControllers)
+                            if (DragonScript.sealIndex != lineController.sealIndexReq)
+                            {
+                                //DragonScript.hasFumbled = true;
+                            }
+
+                        if (isBlu)
+                        {
+                            if (bullet.isBlu)
+                            {
+                                DragonScript.sealIndex++;
+                                //Debug.Log("pisou!");
+                                //GetComponent<Collider2D>().enabled = false;
+                                StopAllCoroutines();
+                                Destroy(bullet.gameObject);
+                            }
+                            else
+                            {
+                                DragonScript.hasFumbled = true;
+                            }
+
+                        }
+                        if (isRed)
+                        {
+
+                        }
+                        if (isRed)
+                        {
+
+                        }
                     }
 
                 }
-                if (isRed)
-                {
-
-                }
-                if (isRed)
-                {
-
-                }
-            }
-
-        }
+        */
     }
-    
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         Radar radar = collision.GetComponent<Radar>();

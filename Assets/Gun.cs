@@ -8,6 +8,8 @@ public class Gun : MonoBehaviour
     public Bullet bullet;
     Vector2 direction;
     public bool isActive = false;
+
+    Camera cam;
     //fazer lista de bullets
     //usando listas
     //qnd dragon faz algo a lista anda e muda a bullet
@@ -15,13 +17,27 @@ public class Gun : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        cam = Camera.main;
+
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        direction = (transform.localRotation * Vector2.right).normalized;
+        //direction = (transform.localRotation * Vector2.right).normalized;
+        //direction = cam.ScreenToWorldPoint(Input.mousePosition);
+
+        Vector3 mouseWorldPosition = cam.ScreenToWorldPoint(Input.mousePosition);
+        mouseWorldPosition.z = transform.position.z;
+
+        direction = (mouseWorldPosition - transform.position).normalized;
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Shoot();
+        }
+
 
     }
 

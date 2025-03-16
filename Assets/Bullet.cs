@@ -11,9 +11,8 @@ public class Bullet : MonoBehaviour
     public float timeToSelfDestruct;
     public float selfDestructTimer;
 
-    public bool isBlu;
-    public bool isRed;
-    public bool isYel;
+    public string color;
+
 
     // Start is called before the first frame update
     void Start()
