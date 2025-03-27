@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,9 +25,25 @@ public class Selo : MonoBehaviour
         Radar radar = collision.GetComponent<Radar>();
         if (radar != null)
         {
-            Debug.Log("DisplayCore");
+            //Debug.Log("DisplayCore");
             foreach (CoreScript core in cores)
                 core.DisplayCore();
         }
+    }
+
+     private void OnTriggerExit2D(Collider2D collision)
+    {
+        Radar radar = collision.GetComponent<Radar>();
+        if (radar != null)
+        {
+            //Debug.Log("DisplayCore");
+            foreach (CoreScript core in cores)
+                core.HideCore();
+        }
+    }
+
+    public void HideSeal()
+    {
+        gameObject.SetActive(false);
     }
 }

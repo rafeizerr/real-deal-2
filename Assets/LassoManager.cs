@@ -9,10 +9,22 @@ public class LassoManager : MonoBehaviour
     public LassoScript lassoScript;
     public CapturePoint capturePoint;
     private LassoScript currentLasso;
+
+    public static string hue;
     // Start is called before the first frame update
     void Start()
     {
 
+    }
+
+    public void DeactivateLasso()
+    {
+        GameObject[] lassos = GameObject.FindGameObjectsWithTag("Lasso");
+        foreach (GameObject lasso in lassos)
+            GameObject.Destroy(lasso);
+        GameObject[] caps = GameObject.FindGameObjectsWithTag("CapturePoint");
+        foreach (GameObject cap in caps)
+            GameObject.Destroy(cap);
     }
 
     // Update is called once per frame
@@ -30,12 +42,13 @@ public class LassoManager : MonoBehaviour
             currentLasso.SetPosition(mousePosition);
         }
 
-        if(Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0))
         {
             GameObject[] lassos = GameObject.FindGameObjectsWithTag("Lasso");
             foreach (GameObject lasso in lassos)
             {
                 GameObject.Destroy(lasso);
+                LassoScript.colorIndex = 0;
             }
 
             GameObject[] caps = GameObject.FindGameObjectsWithTag("CapturePoint");

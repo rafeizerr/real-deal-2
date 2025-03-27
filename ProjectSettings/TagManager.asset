@@ -9,6 +9,8 @@ TagManager:
   - Lasso
   - CapturePoint
   - Core
+  - Manager
+  - bullet
   layers:
   - Default
   - TransparentFX

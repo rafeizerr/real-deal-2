@@ -54,8 +54,7 @@ LineRenderer:
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: b498fcd50a66f450db5e23fa302da095, type: 2}
+  m_Materials: []
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -150,6 +149,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lineRenderer: {fileID: 4039612056574188850}
   edgeCol: {fileID: -7396438727492525172}
+  lassoMaterial:
+  - {fileID: 2100000, guid: b498fcd50a66f450db5e23fa302da095, type: 2}
+  - {fileID: 2100000, guid: 717393e9068514c12ac18ba0cdb8a182, type: 2}
+  - {fileID: 2100000, guid: 73935aa5649604c37b8a0b042be933a5, type: 2}
 --- !u!68 &-7396438727492525172
 EdgeCollider2D:
   m_ObjectHideFlags: 0

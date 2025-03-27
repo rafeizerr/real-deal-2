@@ -12,7 +12,7 @@ public class CapturePoint : MonoBehaviour
 
     void Start()
     {
-        
+
         collider = GetComponent<CircleCollider2D>();
         collider.isTrigger = false;
         StartCoroutine(Spawn());
@@ -24,7 +24,7 @@ public class CapturePoint : MonoBehaviour
     {
         howMany++;
         Capture();
-        Debug.Log("topogigio!");
+        //Debug.Log("topogigio!");
 
     }
 
@@ -33,19 +33,52 @@ public class CapturePoint : MonoBehaviour
         if (howMany == 2 || howMany == 3)
         {
             howMany = 0;
-            Debug.Log("Capture!");
             GameObject[] cores = GameObject.FindGameObjectsWithTag("Core");
-            if(cores != null)
+            if (cores != null)
             {
-                foreach(GameObject core in cores)
+                foreach (GameObject core in cores)
                 {
-                    CoreScript coreScript = core.GetComponent<CoreScript>(); 
-                    if(coreScript != null)
+                    CoreScript coreScript = core.GetComponent<CoreScript>();
+                    if (coreScript != null)
                     {
-                        coreScript.HideCore();
+                        if (LassoManager.hue == coreScript.color)
+                        {
+                            Debug.Log("Capture!");
+                            coreScript.HideCore();
+                            //(adicionar string -dentro da lista que irei criar- no primeiro espaco disponivel)
+                            //Debug.Log("cor do lasso: " + LassoManager.hue + "cor do core: " + coreScript.color);
+                            GameObject[] manager = GameObject.FindGameObjectsWithTag("Manager");
+                            if (manager != null)
+                            {
+                                foreach (GameObject man in manager)
+                                {
+                                    ConstellationManager constellationManager = man.GetComponent<ConstellationManager>();
+                                    if (constellationManager != null)
+                                    {
+                                        constellationManager.AddColor(coreScript.color);
+                                        Debug.Log("caralho");
+                                    }
+                                    else
+                                    {
+                                        Debug.Log("maria joaquina");
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                Debug.Log("valeria carrosel");
+                            }
+                        }
+                        else
+                        {
+                            coreScript.isTheOne = false;
+                            coreScript.HideCore();
+                            //Debug.Log("cor do lasso: " + LassoManager.hue + "cor do core: " + coreScript.color);
+                        }
+
                     }
                 }
-                
+
             }
         }
     }

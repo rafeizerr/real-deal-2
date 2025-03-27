@@ -9,15 +9,29 @@ public class LassoScript : MonoBehaviour
     public EdgeCollider2D edgeCol;
     private List<Vector2> points = new List<Vector2>();
 
+    //Material materials;
+    //[SerializeField] private Material[] materials;
+
+    [SerializeField] Material[] lassoMaterial;
+
+    public static int colorIndex = 0;
+
     // Start is called before the first frame update
     void Start()
     {
         edgeCol.transform.position -= transform.position;
+        lineRenderer.material = lassoMaterial[colorIndex];
+
+
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
+
+
 
     }
 

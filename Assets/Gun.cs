@@ -28,24 +28,34 @@ public class Gun : MonoBehaviour
         //direction = (transform.localRotation * Vector2.right).normalized;
         //direction = cam.ScreenToWorldPoint(Input.mousePosition);
 
-        Vector3 mouseWorldPosition = cam.ScreenToWorldPoint(Input.mousePosition);
-        mouseWorldPosition.z = transform.position.z;
-
-        direction = (mouseWorldPosition - transform.position).normalized;
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            Shoot();
-        }
+        direction = (transform.localRotation * Vector2.right).normalized;
 
 
     }
 
+    public void Up()
+    {
+        transform.rotation = Quaternion.Euler(0, 00, -90);
+    }
+    public void Down()
+    {
+        transform.rotation = Quaternion.Euler(0, 00, 90);
+
+    }
+    public void Left()
+    {
+        transform.rotation = Quaternion.Euler(0, 00, 00);
+    }
+    public void Right()
+    {
+        transform.rotation = Quaternion.Euler(0, 180, 00);
+    }
+
     public void Shoot()
     {
-        GameObject go = Instantiate(bullet.gameObject, transform.position, Quaternion.identity);
+        GameObject go = Instantiate(bullet.gameObject, transform.position, transform.rotation);
         Bullet goBullet = go.GetComponent<Bullet>();
-        goBullet.direction = direction;
+        goBullet.direction = (Vector2)transform.right;
     }
 
 }
