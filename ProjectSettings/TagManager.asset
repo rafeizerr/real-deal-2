@@ -11,6 +11,7 @@ TagManager:
   - Core
   - Manager
   - bullet
+  - wall
   layers:
   - Default
   - TransparentFX

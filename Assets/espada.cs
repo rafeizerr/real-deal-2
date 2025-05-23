@@ -23,10 +23,10 @@ public class espada : MonoBehaviour
     IEnumerator Slice()
     {
         transform.rotation = Quaternion.Euler(62, -16, 91);
-        transform.position = new Vector3(0.53f, -0.08f, 1.5f);
+        transform.localPosition = new Vector3(0.53f, -0.08f, 1.5f);
         yield return new WaitForSeconds(0.5f);
         transform.rotation = Quaternion.Euler(42, -16, 91);
-        transform.position = new Vector3(0.9f, 0f, 1.5f);
+        transform.localPosition = new Vector3(0.9f, 0f, 1.5f);
 
     }
 }
